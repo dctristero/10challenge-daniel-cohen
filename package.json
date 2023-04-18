@@ -1,0 +1,29 @@
+{
+  "name": "10challenge-daniel-cohen",
+  "version": "1.0.0",
+  "description": "10",
+  "main": "index.js",
+  "directories": {
+    "example": "examples",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dctristero/10challenge-daniel-cohen.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dctristero/10challenge-daniel-cohen/issues"
+  },
+  "homepage": "https://github.com/dctristero/10challenge-daniel-cohen#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
+}
