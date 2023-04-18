@@ -2,23 +2,7 @@ const { Shape, Triangle, Square, Circle } = require('./lib/shapes.js');
 const fs = require("fs");
 const inquirer = require("inquirer");
 const path = require("path");
-
-
-
-
-
-
-//   `${Triangle} ffff`;
-//   <div class="container">
-//       <h1 class="display-4">Hi! My name is ${name}</h1>
-//       <p class="lead">I am from ${location}.</p>
-//       <h3>Example heading <span class="badge bg-secondary">Contact Me</span></h3>
-//       <ul class="list-group">
-//         <li class="list-group-item">My GitHub username is ${github}</li>
-//         <li class="list-group-item">LinkedIn: ${linkedin}</li>
-//       </ul>
       
-
 inquirer
   .prompt([
    {
@@ -50,16 +34,34 @@ inquirer
   },
   ])
   .then((answers) => {
-
-   if ("shape" === "Triangle") {
-      const triangle =  new Triangle(answers.color, answers.text, answers.textColor);
-      output = triangle.makeTriangle();
+   let newShape = answers.shape;
+   let newColor = answers.color;
+   let newText = answers.text;
+   let newTextColor = answers.textColor;
+   console.log(newShape, newColor, newText, newTextColor);
+   if (newShape == "Triangle") {
+      const triangle =  new Triangle(newColor, newText, newTextColor);
+      const output = triangle.makeTriangle(triangle.color, triangle.text, triangle.textColor);
       console.log(output);
-   }
+         fs.writeFile(`./examples/tri-${newText}.svg`, output, (err) =>
+         err ? console.log(err) : console.log('Successfully created triangle!')
+    );
+      }
+      else if (newShape == "Square") {
+         const square =  new Square(newColor, newText, newTextColor);
+         const output = square.makeSquare(square.color, square.text, square.textColor);
+         console.log(output);
+            fs.writeFile(`./examples/sq-${newText}.svg`, output, (err) =>
+            err ? console.log(err) : console.log('Successfully created square!')
+       );
+         }
+         else if (newShape == "Circle") {
+            const circle =  new Circle(newColor, newText, newTextColor);
+            const output = circle.makeCircle(circle.color, circle.text, circle.textColor);
+            console.log(output);
+               fs.writeFile(`./examples/cir-${newText}.svg`, output, (err) =>
+               err ? console.log(err) : console.log('Successfully created circle!')
+          );
+            }
 
-   //    const htmlPageContent = generateHTML(answers);
-
-   //    fs.writeFile('index.html', htmlPageContent, (err) =>
-   //       err ? console.log(err) : console.log('Successfully created index.html!')
-   //  );
   });
